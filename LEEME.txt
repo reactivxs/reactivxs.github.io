@@ -1,0 +1,4 @@
+REACTIVXS · sitio listo para GitHub Pages
+Contenido: index.html + carpeta fotos/. Sube TODO tal cual a la raíz del repositorio reactivxs.github.io
+Tipografía: títulos Inter Tight (gruesa) y cuerpo Source Code Pro, ambas desde Google Fonts: se ven igual en todos los dispositivos.
+Si usan dominio propio, cambia reactivxs.github.io por el dominio en index.html (og:url, og:image y canonical).

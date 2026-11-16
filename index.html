@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Reactivxs | Servicios de reducción de riesgos y daños</title>
+<meta name="description" content="Organización caleña que construye estrategias de cuidado en torno al uso de sustancias. Conoce nuestros servicios, arma tu combo y cotiza.">
+<meta name="theme-color" content="#0b0a14">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://reactivxs.github.io/">
+<meta property="og:image" content="https://reactivxs.github.io/fotos/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://reactivxs.github.io/">
+<meta property="og:title" content="Reactivxs | El cuidado es revolución">
+<meta property="og:description" content="Servicios de reducción de riesgos y daños en Cali. Arma tu combo y cotiza.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b0a14'/%3E%3Cpath fill='%23d4144b' d='M50 6l11 28 24-13-13 24 28 11-28 11 13 24-24-13-11 28-11-28-24 13 13-24-28-11 28-11-13-24 24 13z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Source+Code+Pro:wght@400;600;700&display=swap">
+<style>
+/* Layout: bandas de color a ancho completo como las diapositivas del brochure, una columna en celular, tarjetas que se tocan y una barra fija para cotizar. Look único de marca. */
+:root{
+  color-scheme:dark;
+  --ink:#0b0a14; --rojo:#d4144b; --rojo-osc:#8f0c33; --morado:#a507ee; --azul:#5b1bf5; --lima:#e3e81c; --blanco:#ffffff;
+  --display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif; --mono:"Source Code Pro",Consolas,ui-monospace,Menlo,monospace;
+}
+/* Tipografía: títulos en Inter Tight (gruesa, parecida a Helvetica) y cuerpo en Source Code Pro (monoespaciada, parecida a Consolas). Ambas se cargan desde Google Fonts: se ven igual en todos los dispositivos. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--ink);color:var(--blanco);font-family:var(--mono);font-size:15px;line-height:1.55;padding-bottom:96px}
+.band{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:24px 24px}
+.in{max-width:1080px;margin:0 auto;padding-block:44px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(44px,13vw,104px);color:var(--lima)}
+h2{font-size:clamp(30px,8vw,56px);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+p{margin:0}
+.star{display:inline-block;width:.8em;height:.8em;background:var(--lima);flex:none;clip-path:polygon(50% 0,61% 28%,85% 15%,72% 39%,100% 50%,72% 61%,85% 85%,61% 72%,50% 100%,39% 72%,15% 85%,28% 61%,0 50%,28% 39%,15% 15%,39% 28%)}
+.tag{font-family:var(--display);font-weight:800;color:var(--lima);letter-spacing:.04em;font-size:13px}
+.hero{background-color:var(--ink)}
+.hero .in{display:grid;gap:28px;padding-block:36px 44px;align-items:center}
+.hero .txt{display:grid;gap:18px;min-width:0}
+.hero figure{margin:0;border:2px solid var(--lima)}
+.hero figure img{display:block;width:100%;height:auto}
+@media (min-width:860px){.hero .in{grid-template-columns:1.1fr .9fr}.hero h1{font-size:clamp(48px,6.2vw,72px)}}
+.foto{margin:0;position:relative;background:var(--ink)}
+.foto img{display:block;width:100%;height:clamp(220px,42vw,520px);object-fit:cover}
+.foto figcaption{position:absolute;left:0;bottom:0;background:var(--lima);color:var(--ink);font-family:var(--display);font-weight:800;font-size:13px;padding:6px 12px;text-transform:uppercase;letter-spacing:.04em}
+.duo{display:grid;grid-template-columns:1fr}
+@media (min-width:720px){.duo{grid-template-columns:1fr 1fr}}
+.cotiza{background:var(--ink);padding:18px;display:grid;gap:12px}
+.cotiza h3{color:var(--lima);font-size:18px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btns .cta{flex:1 1 220px;justify-content:center;text-align:center}
+.cta.alt{background:var(--blanco)}
+.tag .sep{display:inline-block;width:1em;height:1em;background:var(--lima);margin:0 .45em;vertical-align:-.08em;clip-path:polygon(50% 0,61% 28%,85% 15%,72% 39%,100% 50%,72% 61%,85% 85%,61% 72%,50% 100%,39% 72%,15% 85%,28% 61%,0 50%,28% 39%,15% 15%,39% 28%)}
+.cifra .prof{display:block;margin-top:8px;font-size:11px;line-height:1.45;text-transform:none;letter-spacing:0;opacity:.95}
+.hero .star{width:64px;height:64px;background:var(--rojo);animation:spin 14s linear infinite}
+.hero p{max-width:52ch;font-size:16px}
+.cifras{display:flex;flex-wrap:wrap;gap:10px}
+.cifra{background:var(--rojo);padding:12px 14px;flex:1 1 130px}
+.cifra b{font-family:var(--display);font-weight:900;font-size:34px;display:block;line-height:1}
+.cifra span{font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.frase{background:var(--azul);font-family:var(--display);font-weight:800;padding:14px 16px;font-size:17px;line-height:1.25}
+.b-morado{background-color:var(--morado)} .b-rojo{background-color:var(--rojo)} .b-azul{background-color:var(--azul)} .b-negro{background-color:var(--ink)}
+.stack{display:grid;gap:22px}
+.hint{color:var(--lima);font-weight:600}
+details{border-bottom:2px solid var(--lima)}
+summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:center;padding:14px 0;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.15}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-size:26px;color:var(--lima);line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 16px 26px}
+summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visible+label{outline:3px solid var(--blanco);outline-offset:2px}
+.grid{display:grid;gap:12px;align-items:start;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.svc{background:var(--rojo-osc);display:grid;align-content:start}
+.svc.c1{background:var(--lima);color:var(--ink)} .svc.c2{background:var(--azul)} .svc.c3{background:var(--morado)}
+.svc details{border:0;padding:0 14px}
+.svc summary{font-size:16px;text-transform:none;padding:14px 0 10px}
+.svc summary::after{color:currentColor}
+.svc dl{margin:0 0 12px;display:grid;gap:8px;font-size:14px}
+.svc dt{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.svc dd{margin:0}
+.svc input{position:absolute;opacity:0;pointer-events:none}
+.svc label{display:flex;gap:8px;align-items:center;justify-content:center;cursor:pointer;margin-top:auto;padding:11px 14px;background:var(--ink);color:var(--blanco);font-family:var(--display);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.04em;min-height:44px}
+.svc label::before{content:"+"}
+.svc input:checked+label{background:var(--blanco);color:var(--ink)}
+.svc input:checked+label::before{content:"✓"}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{font:inherit;font-family:var(--display);font-weight:800;border:2px solid var(--lima);background:transparent;color:var(--lima);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:44px}
+.tabs button[aria-pressed="true"]{background:var(--lima);color:var(--ink)}
+.nodos{display:flex;flex-wrap:wrap;gap:8px;min-height:120px;align-content:flex-start}
+.nodo{display:flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.35);padding:8px 12px;animation:pop .35s both}
+.nodo .star{width:14px;height:14px;background:var(--azul)}
+.caja{background:var(--ink);padding:18px}
+.caja h3{color:var(--lima);font-size:16px;margin-bottom:10px}
+.caja ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.dos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.contacto{display:grid;gap:10px}
+.contacto a{color:var(--blanco)}
+.fila{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.copy{font:inherit;font-size:12px;background:transparent;color:var(--lima);border:1px solid var(--lima);padding:6px 10px;cursor:pointer;min-height:36px}
+.slogan{font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--lima);font-size:clamp(26px,7vw,48px);line-height:1}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ink);border-top:2px solid var(--lima);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar .row{max-width:1080px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.bar small{flex:1;min-width:0;font-size:12px;line-height:1.3}
+.cta{flex:none;line-height:1.1;background:var(--lima);color:var(--ink);font-family:var(--display);font-weight:900;text-decoration:none;padding:12px 16px;border-radius:999px;font-size:14px;text-transform:uppercase;min-height:44px;display:flex;align-items:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pop{from{transform:scale(.85);opacity:.4}}
+@media (prefers-reduced-motion:reduce){.hero .star,.nodo{animation:none}}
+</style>
+
+</head>
+<body>
+<header class="band hero"><div class="in"><div class="txt">
+  <span class="star"></span>
+  <p class="tag">REACTIVXS <span class="sep" aria-hidden="true"></span> REDUCCIÓN DE RIESGOS Y DAÑOS <span class="sep" aria-hidden="true"></span> CALI</p>
+  <h1>El cuidado es revolución</h1>
+  <p>Somos una organización caleña que construye <b>estrategias de cuidado en torno al uso de sustancias psicoactivas</b>, con un enfoque técnico y comunitario. Trabajamos en la rumba, en la calle, en universidades, instituciones y espacios comunitarios.</p>
+  <div class="cifras">
+    <div class="cifra"><b>+5</b><span>años en el territorio</span></div>
+    <div class="cifra"><b>+200</b><span>intervenciones</span></div>
+    <div class="cifra"><b>9</b><span>personas en el equipo</span><span class="prof">Médicxs · Psicólogxs · Comunicadorxs · Químicxs puros y farmacéuticxs</span></div>
+  </div>
+  <p class="frase">Cuidarse no es un privilegio, es un derecho que exigimos juntxs. Dignidad y raíz en el territorio, para pasarla más sabroso.</p>
+  </div>
+  <figure><img fetchpriority="high" decoding="async" src="fotos/1.jpg" alt="Persona de espaldas con la camiseta de Reactivxs, reducción de riesgos y daños, y el hashtag #CuidadoEsRevolución en amarillo" width="1200" height="828"></figure>
+</div></header>
+<figure class="foto"><img src="fotos/3.jpg" alt="Equipo de Reactivxs en una plaza de mercado de Cali" loading="lazy" decoding="async" width="1440" height="810"><figcaption>El equipo</figcaption></figure>
+
+<section class="band b-rojo"><div class="in stack">
+  <h2><span class="star"></span>Qué hacemos</h2>
+  <p class="hint">Toca un servicio para ver el detalle. Suma los que te interesen y arma tu combo.</p>
+  <div class="grid" id="servicios"></div>
+</div></section>
+
+<div class="duo"><figure class="foto"><img src="fotos/9.jpg" alt="Análisis de sustancias con reactivos colorimétricos" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Análisis de sustancias</figcaption></figure><figure class="foto"><img src="fotos/13.jpg" alt="Análisis de una flor de cannabis" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Protocolo de cannabis</figcaption></figure></div>
+<section class="band b-morado"><div class="in stack">
+  <h2><span class="star"></span>Cómo trabajamos</h2>
+  <p class="hint">Principios que orientan cada acompañamiento, formación e intervención.</p>
+  <div id="principios"></div>
+</div></section>
+
+<figure class="foto"><img src="fotos/11.jpg" alt="Equipo de Reactivxs en una formación con microscopio" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Formación y pedagogía</figcaption></figure>
+<section class="band b-negro"><div class="in stack">
+  <h2 style="color:var(--lima)">Mapa de aliadxs</h2>
+  <div class="tabs" id="tabs"></div>
+  <div class="nodos" id="nodos" aria-live="polite"></div>
+</div></section>
+
+<figure class="foto"><img src="fotos/6.jpg" alt="Mano sobre mangos junto a la camiseta de Reactivxs" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Raíz en el territorio</figcaption></figure>
+<section class="band b-azul" id="cotizar"><div class="in stack">
+  <h2><span class="star"></span>Cómo contratarnos</h2>
+  <div class="dos">
+    <div class="caja"><h3>En 3 pasos</h3><ol>
+      <li>Cuéntanos qué evento, espacio o proceso pedagógico tienes en mente.</li>
+      <li>Armamos una propuesta y una cotización a la medida.</li>
+      <li>Nos encontramos en el territorio y cuidamos juntxs.</li></ol></div>
+    <div class="caja"><h3>Nuestros mínimos</h3><ol>
+      <li>Somos un proyecto autogestionado: toda cotización cubre como mínimo los viáticos y la logística del equipo.</li>
+      <li>Análisis de sustancias y zonas de cuidado solo para personas mayores de edad.</li>
+      <li>Confidencialidad y trato sin discriminación.</li>
+      <li>Promovemos estrategias de cuidado, no el uso de sustancias.</li>
+      <li>No sustituimos servicios médicos: recomendamos tener primeros auxilios en el evento.</li></ol></div>
+  </div>
+  <div class="cotiza">
+    <h3>Cotiza con nosotrxs</h3>
+    <p id="resumen2">El mensaje ya va escrito. Solo completas tus datos y envías.</p>
+    <div class="btns">
+      <a class="cta" id="mailCel" href="#">Correo desde tu celular</a>
+      <a class="cta" id="mailPc" href="#" target="_blank" rel="noopener">Correo desde tu PC</a>
+      <a class="cta alt" id="wa2" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="contacto">
+    <div class="fila"><span>WhatsApp: <b>+57 323 523 1396</b></span></div>
+    <div class="fila"><span>Correo: <b id="mail">luladaderrd@gmail.com</b></span><button class="copy" id="copy" type="button">Copiar</button></div>
+    <div class="fila"><span>Instagram: <a href="https://www.instagram.com/colectivo.reactivxs/">@colectivo.reactivxs</a> y <a href="https://www.instagram.com/reactivxs/">@reactivxs</a></span></div>
+    <div class="fila"><span>Punto fijo: Calle 4c #35-15, Green House. Estamos todos los viernes.</span></div>
+  </div>
+  <p class="slogan">#CuidadoEsRevolución</p>
+</div></section>
+
+<div class="bar"><div class="row">
+  <small id="resumen">Suma servicios para armar tu combo.</small>
+  <a class="cta alt" id="cta" href="https://wa.me/573235231396" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="cta" id="mailAuto" href="#cotizar">Correo</a>
+</div></div>
+
+<script>
+const S=[
+ ["Protocolo comunitario de análisis de cannabis","Protocolo propio en cinco pasos: organoléptico, humedímetro, luz UV, microscopio y colorimetría, con asesoría a la medida de cada persona.","Saber qué hay en el cannabis que se consume con una metodología única y decidir con información, sin juicios.","Personas usuarias, eventos, clubes y colectivos cannábicos","c1"],
+ ["Stand informativo y análisis de sustancias","Stand con información sobre sustancias psicoactivas y análisis con reactivos colorimétricos y tiras (fentanilo, benzodiacepinas, xilacina).","Cuidar, evitar experiencias que puedan ser más graves con pedagogía y reconocer los derechos de las personas usuarias.","Productorxs de eventos, festivales, clubes e instituciones","c2"],
+ ["Zona de recuperación","Lugar tranquilo con equipo especializado para acompañar experiencias retadoras con alcohol u otras sustancias, con profesionales de la salud.","Atender a tiempo las crisis generadas por el uso de sustancias, sin que escalen a una emergencia más grave.","Eventos, espacios de fiesta y festivales","c3"],
+ ["Dispositivo de alcoholimetría preventiva","Alcoholimetría para sensibilizar sobre el consumo de alcohol y formación al staff sobre VBG y protocolos de reducción de daños con esta sustancia.","Una fiesta que se cuida, protocolos de acción ante emergencias y más responsabilidad con el alcohol.","Eventos, clubes, espacios de fiesta y espacio público",""],
+ ["Dispositivos de cuidado en espacio público","Puntos de cuidado en calles, barrios, parques y espacios de fiesta, con información, análisis y acompañamiento.","Reducción de riesgos donde la gente ya está, sin que tenga que ir a buscarla.","Instituciones y organizaciones comunitarias",""],
+ ["Charlas, talleres y conversatorios","Sobre uso de sustancias, consentimiento, violencias basadas en género, maternidades y paternidades que usan sustancias y políticas de drogas.","Comunidades con herramientas para hablar de sustancias y decidir con información.","Colectivos, eventos comunitarios, organizaciones y universidades",""],
+ ["Formación a equipos","Capacitación a staff de eventos, funcionarixs y personal de salud en reducción de riesgos y daños, manejo de crisis y protocolos de cuidado.","Equipos que cuidan: acompañar sin castigar, requisas sin transgredir y espacios con condiciones mínimas de cuidado.","Eventos, instituciones y personal de salud",""],
+ ["Consultoría y asistencia técnica","Políticas de drogas, uso de sustancias en el espacio público, protocolos y rutas de atención.","Programas y espacios con enfoque de derechos y salud pública integral, con rutas claras.","Instituciones públicas y privadas, y academia",""],
+ ["Acompañamiento psicológico","Orientación psicológica desde la reducción de riesgos y daños y el autocuidado, sin juicio y sin exigir abstinencia.","Un espacio de escucha para pensar el consumo, cuidarse y decidir.","Personas usuarias y comunidades",""],
+ ["Comunicación sin estigmatización","Estrategias de comunicación con enfoque pedagógico, creativo y gráfico sobre las relaciones de las personas con las sustancias y el cuidado colectivo.","Comunicación accesible y sin tecnicismos sobre cuidado, políticas de drogas y comunidad.","Colectivos, escenas culturales y comunidades",""]
+];
+const P=[
+ ["No criminalización","Ponemos por delante el cuidado, porque sabemos que perseguir a quienes usan sustancias psicoactivas refuerza la violencia."],
+ ["Respeto por la autonomía","Cada cuerpo es distinto y cada persona decide sobre el suyo. Nosotrxs brindamos información y herramientas."],
+ ["Información basada en evidencia y comunidad","Aterrizamos la información, sin tecnicismos, para que no haya barreras de acceso."],
+ ["Acompañamiento basado en la escucha","Cada experiencia merece ser comprendida sin juicio."],
+ ["Cuidado comunitario y participación","Cuidamos con las comunidades, no sobre ellas."],
+ ["Perspectiva de derechos y salud pública","Priorizamos el bienestar, no desde el castigo ni la coerción."],
+ ["Enfoque en VBG","Identificamos, prevenimos y compartimos rutas para casos de violencias basadas en género en los espacios donde intervenimos."],
+ ["Enfoque diferencial","Los riesgos y el estigma no golpean a todxs igual. Tenemos en cuenta edad, clase, género, territorio, identidad cultural, orientación sexual y trayectoria de vida para adaptar nuestras estrategias."]
+];
+const A={
+ "RReD Cali":["ESE Ladera - Sec. de Salud de Cali","Tejiendo Territorios","3C","Corporación Viviendo","Corporación Sapiencia","Asc. Café Arboleda"],
+ "Festivales y eventos":["EDC Medellín","La Pérgola Clandestina","Sucursal Fest","Páramo (Festival Cordillera, Baum, FEP)"],
+ "Academia e instituciones":["Ministerio de Justicia","CESED - Uni Andes","Universidad Javeriana de Cali","Universidad del Valle","Secretaría de Cultura de Cali","Sistema de Responsabilidad Penal para Adolescentes"],
+ "Aliados y redes":["Green House (punto fijo)","Barbies Testeadoras del Bajío (México)","Asociación para el Estudio de la Política de Drogas (México)","La Clave","Rizoma","Sonido Popular","Red de Servicios de Análisis de sustancias"]
+};
+const $=id=>document.getElementById(id);
+$("servicios").innerHTML=S.map((s,i)=>`<article class="svc ${s[4]}"><details${i===1?" open":""}><summary>${s[0]}</summary><dl><div><dt>Qué hacemos</dt><dd>${s[1]}</dd></div><div><dt>Qué logras</dt><dd>${s[2]}</dd></div><div><dt>Para quién</dt><dd>${s[3]}</dd></div></dl></details><input type="checkbox" id="s${i}"><label for="s${i}">Sumar al combo</label></article>`).join("");
+$("principios").innerHTML=P.map((p,i)=>`<details${i===0?" open":""}><summary><span class="star"></span>${p[0]}</summary><p>${p[1]}</p></details>`).join("");
+const grupos=Object.keys(A);
+$("tabs").innerHTML=grupos.map((g,i)=>`<button type="button" id="t${i}" aria-pressed="${i===0}">${g}</button>`).join("");
+function ver(i){grupos.forEach((_,k)=>$("t"+k).setAttribute("aria-pressed",k===i));
+ $("nodos").innerHTML=A[grupos[i]].map((n,k)=>`<span class="nodo" style="animation-delay:${k*50}ms"><span class="star"></span>${n}</span>`).join("")}
+grupos.forEach((_,i)=>$("t"+i).addEventListener("click",()=>ver(i)));ver(0);
+const enc=t=>encodeURIComponent(t).replace(/%3A/g,":").replace(/%2C/g,",");
+function combo(){const sel=S.filter((_,i)=>$("s"+i).checked).map(s=>s[0]);
+ const n=sel.length;
+ $("resumen").textContent=n?`${n} ${n===1?"servicio":"servicios"} en tu combo`:"Suma servicios para armar tu combo.";
+ $("resumen2").textContent=n?"Tu mensaje ya incluye: "+sel.join(", ")+". Solo completas tus datos y envías.":"El mensaje ya va escrito. Solo completas tus datos y envías.";
+ const wa="Hola Reactivxs, quiero cotizar"+(n?" estos servicios:\n"+sel.map(s=>"- "+s).join("\n"):" sus servicios.")+"\n\nProyecto u organización: \nFecha: \nLugar: \nAsistentes aprox.: ";
+ const w="https://wa.me/573235231396?text="+encodeURIComponent(wa);
+ $("cta").href=w;$("wa2").href=w;
+ const su="❤️‍🔥 Quiero cotizar con Reactivxs | Proyecto u organización: ";
+ const L=["Hola Reactivxs ❤️‍🔥","","Quiero cotizar con ustedes. Les cuento:","","🏷️ Proyecto u organización:","📅 Fecha del evento o proceso:","📍 Lugar (ciudad y espacio):","👥 Número aproximado de asistentes:","🧰 Servicios que me interesan:"+(n?" "+sel.join(", "):""),"💬 Cuéntennos más (qué buscan, qué contexto):","","¡Gracias! Quedamos atentxs 💜"];
+ const mailto="mailto:luladaderrd@gmail.com?subject="+enc(su)+"&body="+L.map(enc).join("%0D%0A");
+ const gmail="https://mail.google.com/mail/?view=cm&fs=1&to=luladaderrd@gmail.com&su="+enc(su)+"&body="+L.map(enc).join("%0A");
+ $("mailCel").href=mailto;$("mailPc").href=gmail;
+ const cel=matchMedia("(pointer:coarse)").matches;const a=$("mailAuto");
+ a.href=cel?mailto:gmail;if(cel){a.removeAttribute("target")}else{a.target="_blank";a.rel="noopener"}}
+$("servicios").addEventListener("change",combo);combo();
+$("copy").addEventListener("click",()=>{const b=$("copy");
+ navigator.clipboard.writeText($("mail").textContent).then(()=>{b.textContent="Copiado"},()=>{const r=document.createRange();r.selectNodeContents($("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r)})});
+</script>
+
+</body>
+</html>
