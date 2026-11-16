@@ -2,3 +2,6 @@ REACTIVXS · sitio listo para GitHub Pages
 Contenido: index.html + carpeta fotos/. Sube TODO tal cual a la raíz del repositorio reactivxs.github.io
 Tipografía: títulos Inter Tight (gruesa) y cuerpo Source Code Pro, ambas desde Google Fonts: se ven igual en todos los dispositivos.
 Si usan dominio propio, cambia reactivxs.github.io por el dominio en index.html (og:url, og:image y canonical).
+
+ICONO DE LA PESTAÑA: favicon.ico, favicon-32.png, icon-192.png, icon-512.png y apple-touch-icon.png
+van en la misma carpeta que index.html (subelos todos al repositorio).
