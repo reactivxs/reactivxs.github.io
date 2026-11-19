@@ -5,3 +5,10 @@ Si usan dominio propio, cambia reactivxs.github.io por el dominio en index.html 
 
 ICONO DE LA PESTAÑA: favicon.ico, favicon-32.png, icon-192.png, icon-512.png y apple-touch-icon.png
 van en la misma carpeta que index.html (subelos todos al repositorio).
+
+V2: menú superior, pie con derechos de autor, estrellitas en las profesiones y animaciones sobrias (se apagan si el dispositivo pide menos movimiento).
+
+V3: logo VXS en la barra, boton Cotiza con guino, pie con logo completo.
+V4: logo del inicio con latido, boton Cotiza en rojo, pie simple con VXS.
+V5: bola disco en el logo del inicio, flor en la barra, VXS rojo en el pie.
+V6: logo del inicio gira, nombre que sale del logo de la barra, estrellas del pie giran.

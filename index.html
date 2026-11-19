@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Source+Code+Pro:wght@400;600;700&display=swap">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 /* Layout: bandas de color a ancho completo como las diapositivas del brochure, una columna en celular, tarjetas que se tocan y una barra fija para cotizar. Look único de marca. */
 :root{
@@ -63,7 +64,8 @@ p{margin:0}
 .cta.alt{background:var(--blanco)}
 .tag .sep{display:inline-block;width:1em;height:1em;background:var(--lima);margin:0 .45em;vertical-align:-.08em;clip-path:polygon(50% 0,61% 28%,85% 15%,72% 39%,100% 50%,72% 61%,85% 85%,61% 72%,50% 100%,39% 72%,15% 85%,28% 61%,0 50%,28% 39%,15% 15%,39% 28%)}
 .cifra .prof{display:block;margin-top:8px;font-size:11px;line-height:1.45;text-transform:none;letter-spacing:0;opacity:.95}
-.hero .logo{display:block;width:84px;height:84px;animation:spin 14s linear infinite}
+.hero .giro{width:84px;height:84px;animation:entra .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .logo{display:block;width:84px;height:84px;animation:spin 16s linear infinite;will-change:transform;backface-visibility:hidden}
 .hero p{max-width:52ch;font-size:16px}
 .cifras{display:flex;flex-wrap:wrap;gap:10px}
 .cifra{background:var(--rojo);padding:12px 14px;flex:1 1 130px}
@@ -72,6 +74,7 @@ p{margin:0}
 .frase{background:var(--azul);font-family:var(--display);font-weight:800;padding:14px 16px;font-size:17px;line-height:1.25}
 .b-morado{background-color:var(--morado)} .b-rojo{background-color:var(--rojo)} .b-azul{background-color:var(--azul)} .b-negro{background-color:var(--ink)}
 .stack{display:grid;gap:22px}
+.stack>*{min-width:0}
 .hint{color:var(--lima);font-weight:600}
 details{border-bottom:2px solid var(--lima)}
 summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:center;padding:14px 0;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.15}
@@ -98,8 +101,8 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
 .tabs button{font:inherit;font-family:var(--display);font-weight:800;border:2px solid var(--lima);background:transparent;color:var(--lima);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:44px}
 .tabs button[aria-pressed="true"]{background:var(--lima);color:var(--ink)}
 .nodos{display:flex;flex-wrap:wrap;gap:8px;min-height:120px;align-content:flex-start}
-.nodo{display:flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.35);padding:8px 12px;animation:pop .35s both}
-.nodo .star{width:14px;height:14px;background:var(--azul)}
+.nodo{display:flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.35);padding:8px 12px;animation:pop .35s backwards;cursor:default;background:linear-gradient(var(--lima),var(--lima)) no-repeat left/0% 100%;transition:background-size .4s cubic-bezier(.2,.7,.2,1),color .25s,border-color .25s,transform .2s,box-shadow .2s}
+.nodo .star{width:14px;height:14px;background:var(--azul);transition:transform .55s cubic-bezier(.3,1.6,.5,1),background-color .25s}
 .caja{background:var(--ink);padding:18px}
 .caja h3{color:var(--lima);font-size:16px;margin-bottom:10px}
 .caja ol{margin:0;padding-left:22px;display:grid;gap:8px}
@@ -108,7 +111,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
 .contacto a{color:var(--blanco)}
 .fila{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .copy{font:inherit;font-size:12px;background:transparent;color:var(--lima);border:1px solid var(--lima);padding:6px 10px;cursor:pointer;min-height:36px}
-.slogan{font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--lima);font-size:clamp(26px,7vw,48px);line-height:1}
+.slogan{font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--lima);font-size:clamp(21px,6vw,48px);line-height:1;overflow-wrap:anywhere}
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ink);border-top:2px solid var(--lima);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .bar .row{max-width:1080px;margin:0 auto;display:flex;gap:12px;align-items:center}
 .bar small{flex:1;min-width:0;font-size:12px;line-height:1.3}
@@ -116,19 +119,121 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pop{from{transform:scale(.85);opacity:.4}}
 @media (prefers-reduced-motion:reduce){.hero .logo,.nodo{animation:none}}
+
+/* ===== v2: navegación, pie, movimiento y detalles de acabado ===== */
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+.sep{display:inline-block;width:.9em;height:.9em;background:var(--lima);margin:0 .4em;vertical-align:-.1em;clip-path:polygon(50% 0,61% 28%,85% 15%,72% 39%,100% 50%,72% 61%,85% 85%,61% 72%,50% 100%,39% 72%,15% 85%,28% 61%,0 50%,28% 39%,15% 15%,39% 28%)}
+.prof .sep{width:.85em;height:.85em;margin:0 .3em}
+.top{position:sticky;top:0;z-index:30;background:rgba(11,10,20,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.14);padding-top:env(safe-area-inset-top,0px)}
+.top .row{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:18px;min-height:58px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;gap:10px;color:var(--blanco);text-decoration:none;font-family:var(--display);font-weight:900;letter-spacing:.04em;font-size:15px;flex:none}
+.brand img{height:38px;width:auto;display:block}
+.links{display:flex;gap:6px;margin-left:auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--blanco);text-decoration:none;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:10px;white-space:nowrap;position:relative}
+.links a::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:2px;background:var(--lima);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.links a:focus-visible{outline:2px solid var(--blanco);outline-offset:-2px}
+.foto,.hero figure{overflow:hidden}
+.foto img,.hero figure img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.cta,.tabs button,.copy,.svc label,.svc{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,color .18s ease}
+.cta:active,.svc label:active{transform:scale(.97)}
+.svc input:checked+label{animation:bump .32s ease}
+summary .star{transition:transform .45s ease}
+details[open]>:not(summary){animation:fade .35s ease both}
+.cifra b{font-variant-numeric:tabular-nums}
+.foot{border-top:2px solid var(--lima)}
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.vis{opacity:1;transform:none}
+.js .foto figcaption{transform:translateX(-101%);transition:transform .55s cubic-bezier(.2,.7,.2,1) .25s}
+.js .foto.vis figcaption{transform:none}
+@media (hover:hover){
+ .cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--blanco)}
+ .cta.alt:hover,.navcta:hover{box-shadow:4px 4px 0 var(--lima)}
+ .tabs button:hover{background:rgba(227,232,28,.18)}
+ .tabs button[aria-pressed="true"]:hover{background:var(--lima)}
+ .copy:hover{background:var(--lima);color:var(--ink)}
+ .svc:hover{transform:translateY(-3px);box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+ .svc label:hover{background:var(--blanco);color:var(--ink)}
+ .foto:hover img,.hero figure:hover img{transform:scale(1.045)}
+ summary:hover .star{transform:rotate(90deg)}
+ .links a:hover::after{transform:scaleX(1)}
+}
+
+.nodo:focus-visible,.nodo:active{background-size:100% 100%;color:var(--ink);border-color:var(--lima);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--rojo);outline:none}
+.nodo:focus-visible .star,.nodo:active .star{background:var(--ink);transform:rotate(180deg) scale(1.4)}
+@media (hover:hover){
+ .nodo:hover{background-size:100% 100%;color:var(--ink);border-color:var(--lima);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--rojo)}
+ .nodo:hover .star{background:var(--ink);transform:rotate(180deg) scale(1.4)}
+}
+.navcta{font-size:13px;padding:8px 16px;min-height:40px;background:var(--rojo);color:var(--blanco)}
+.top .row{gap:12px}
+.links a{padding:10px 8px}
+@media (max-width:480px){
+ .top .row{gap:6px;min-height:54px}
+ .brand img{height:28px}
+ .links{gap:0}
+ .links a{font-size:10.5px;letter-spacing:.02em;padding:10px 6px}
+ .links a::after{left:6px;right:6px}
+ .navcta{font-size:12px;padding:7px 11px;min-height:38px;gap:4px}
+}
+@media (max-width:420px){
+ .top .row{gap:4px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+ .brand img{height:32px}
+ .links a{font-size:10px;letter-spacing:0;padding:10px 5px}
+ .links a::after{left:5px;right:5px}
+ .navcta{font-size:11.5px;padding:6px 9px;min-height:36px;gap:3px}
+}
+@media (max-width:370px){.links a{font-size:9.5px;padding:10px 4px}.navcta{padding:6px 8px}}
+.foot .in{text-align:center}
+@media (prefers-reduced-motion:reduce){.lugar .star,.hero .logo,.hero .giro{animation:none}.nodo,.nodo .star,.brand img,.brand .nombre,.brand .nombre b{transition:none}}
+.foot .in{padding-block:30px 26px;display:grid;gap:14px;justify-items:center}
+.foot .vxs{display:block;height:48px;width:auto}
+.lugar{display:flex;flex-wrap:wrap;gap:8px 12px;justify-content:center;align-items:center;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--lima);margin:0;text-align:center}
+.lugar .star{width:15px;height:15px;animation:spin 9s linear infinite;will-change:transform}
+.lugar .star:nth-child(2){animation-direction:reverse}
+.legal{margin:0;font-size:11px;opacity:.65;text-align:center}
+.brand img{position:relative;z-index:1;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.brand .nombre{display:block;overflow:hidden;max-width:0;transition:max-width .6s cubic-bezier(.2,.7,.2,1)}
+.brand .nombre b{display:block;padding-left:10px;white-space:nowrap;font-size:16px;letter-spacing:.04em;line-height:1.2;transform:translateX(-105%);opacity:0;transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .35s ease}
+.brand:focus-visible,.links a:focus-visible{outline:2px solid var(--blanco);outline-offset:2px}
+.brand:focus-visible .nombre,.top.open .nombre{max-width:140px}
+.brand:focus-visible .nombre b,.top.open .nombre b{transform:none;opacity:1}
+.brand:focus-visible img,.top.open .brand img{transform:rotate(90deg)}
+.links{transition:opacity .3s ease}
+.top.open .links{opacity:0;pointer-events:none}
+@media (hover:hover){
+ .brand:hover .nombre{max-width:140px}
+ .brand:hover .nombre b{transform:none;opacity:1}
+ .brand:hover img{transform:rotate(90deg)}
+}
+@keyframes entra{from{opacity:0;transform:scale(.82)}}
+@keyframes bump{50%{transform:scale(1.04)}}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .js .rv,.js .foto figcaption{opacity:1;transform:none;transition:none}
+ .foto img,.hero figure img,.cta,.svc,.svc label{transition:none}
+ .svc input:checked+label,details[open]>:not(summary){animation:none}
+ .cta:hover,.svc:hover,.foto:hover img,.hero figure:hover img{transform:none}
+}
 </style>
 
 </head>
-<body>
+<body id="top">
+<nav class="top" aria-label="Principal"><div class="row">
+  <a class="brand" id="brand" href="#top" aria-label="Reactivxs, ir al inicio"><img src="fotos/flor.png" alt="" width="38" height="38"><span class="nombre" aria-hidden="true"><b>REACTIVXS</b></span></a>
+  <div class="links"><a href="#sec-servicios">Servicios</a><a href="#sec-trabajo">Principios</a><a href="#sec-aliadxs">Aliadxs</a></div>
+  <a class="cta navcta" href="#cotizar">Cotizá</a>
+</div></nav>
 <header class="band hero"><div class="in"><div class="txt">
-  <img class="logo" src="fotos/flor.png" alt="Logo de Reactivxs" width="84" height="84">
+  <div class="giro"><img class="logo" data-anim src="fotos/flor.png" alt="Logo de Reactivxs" width="84" height="84"></div>
   <p class="tag">REACTIVXS <span class="sep" aria-hidden="true"></span> REDUCCIÓN DE RIESGOS Y DAÑOS <span class="sep" aria-hidden="true"></span> CALI</p>
   <h1>El cuidado es revolución</h1>
   <p>Somos una organización caleña que construye <b>estrategias de cuidado en torno al uso de sustancias psicoactivas</b>, con un enfoque técnico y comunitario. Trabajamos en la rumba, en la calle, en universidades, instituciones y espacios comunitarios.</p>
   <div class="cifras">
-    <div class="cifra"><b>+5</b><span>años en el territorio</span></div>
-    <div class="cifra"><b>+200</b><span>intervenciones</span></div>
-    <div class="cifra"><b>9</b><span>personas en el equipo</span><span class="prof">Médicxs · Psicólogxs · Comunicadorxs · Químicxs puros y farmacéuticxs</span></div>
+    <div class="cifra"><b data-n="5" data-pre="+">+5</b><span>años en el territorio</span></div>
+    <div class="cifra"><b data-n="200" data-pre="+">+200</b><span>intervenciones</span></div>
+    <div class="cifra"><b data-n="9" data-pre="">9</b><span>personas en el equipo</span><span class="prof">Médicxs <span class="sep" aria-hidden="true"></span> Psicólogxs <span class="sep" aria-hidden="true"></span> Comunicadorxs <span class="sep" aria-hidden="true"></span> Químicxs puros y farmacéuticxs</span></div>
   </div>
   <p class="frase">Cuidarse no es un privilegio, es un derecho que exigimos juntxs. Dignidad y raíz en el territorio, para pasarla más sabroso.</p>
   </div>
@@ -136,21 +241,21 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
 </div></header>
 <figure class="foto"><img src="fotos/3.jpg" alt="Equipo de Reactivxs en una plaza de mercado de Cali" loading="lazy" decoding="async" width="1440" height="810"><figcaption>El equipo</figcaption></figure>
 
-<section class="band b-rojo"><div class="in stack">
+<section class="band b-rojo" id="sec-servicios"><div class="in stack">
   <h2><span class="star"></span>Qué hacemos</h2>
   <p class="hint">Toca un servicio para ver el detalle. Suma los que te interesen y arma tu combo.</p>
   <div class="grid" id="servicios"></div>
 </div></section>
 
 <div class="duo"><figure class="foto"><img src="fotos/9.jpg" alt="Análisis de sustancias con reactivos colorimétricos" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Análisis de sustancias</figcaption></figure><figure class="foto"><img src="fotos/13.jpg" alt="Análisis de una flor de cannabis" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Protocolo de cannabis</figcaption></figure></div>
-<section class="band b-morado"><div class="in stack">
+<section class="band b-morado" id="sec-trabajo"><div class="in stack">
   <h2><span class="star"></span>Cómo trabajamos</h2>
   <p class="hint">Principios que orientan cada acompañamiento, formación e intervención.</p>
   <div id="principios"></div>
 </div></section>
 
 <figure class="foto"><img src="fotos/11.jpg" alt="Equipo de Reactivxs en una formación con microscopio" loading="lazy" decoding="async" width="1440" height="810"><figcaption>Formación y pedagogía</figcaption></figure>
-<section class="band b-negro"><div class="in stack">
+<section class="band b-negro" id="sec-aliadxs"><div class="in stack">
   <h2 style="color:var(--lima)">Mapa de aliadxs</h2>
   <div class="tabs" id="tabs"></div>
   <div class="nodos" id="nodos" aria-live="polite"></div>
@@ -172,7 +277,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
       <li>No sustituimos servicios médicos: recomendamos tener primeros auxilios en el evento.</li></ol></div>
   </div>
   <div class="cotiza">
-    <h3>Cotiza con nosotrxs</h3>
+    <h3>Cotizá con nosotrxs</h3>
     <p id="resumen2">El mensaje ya va escrito. Solo completas tus datos y envías.</p>
     <div class="btns">
       <a class="cta" id="mailCel" href="#">Correo desde tu celular</a>
@@ -188,6 +293,12 @@ summary:focus-visible,button:focus-visible,a:focus-visible,.svc input:focus-visi
   </div>
   <p class="slogan">#CuidadoEsRevolución</p>
 </div></section>
+
+<footer class="band b-negro foot"><div class="in">
+  <img class="vxs" src="fotos/vxs-rojo.png" alt="Reactivxs" width="117" height="48" loading="lazy" decoding="async">
+  <p class="lugar"><span class="star" aria-hidden="true"></span>Reducción de riesgos y daños<span class="star" aria-hidden="true"></span>Cali, Colombia<span class="star" aria-hidden="true"></span></p>
+  <p class="legal">© <span id="anio">2026</span> Reactivxs, reducción de riesgos y daños. Todos los derechos reservados.</p>
+</div></footer>
 
 <div class="bar"><div class="row">
   <small id="resumen">Suma servicios para armar tu combo.</small>
@@ -222,7 +333,7 @@ const A={
  "RReD Cali":["ESE Ladera - Sec. de Salud de Cali","Tejiendo Territorios","3C","Corporación Viviendo","Corporación Sapiencia","Asc. Café Arboleda"],
  "Festivales y eventos":["EDC Medellín","La Pérgola Clandestina","Sucursal Fest","Páramo (Festival Cordillera, Baum, FEP)"],
  "Academia e instituciones":["Ministerio de Justicia","CESED - Uni Andes","Universidad Javeriana de Cali","Universidad del Valle","Secretaría de Cultura de Cali","Sistema de Responsabilidad Penal para Adolescentes"],
- "Aliados y redes":["Green House (punto fijo)","Barbies Testeadoras del Bajío (México)","Asociación para el Estudio de la Política de Drogas (México)","La Clave","Rizoma","Sonido Popular","Red de Servicios de Análisis de sustancias"]
+ "Aliadxs y redes":["Green House (punto fijo)","Barbies Testeadoras del Bajío (México)","Asociación para el Estudio de la Política de Drogas (México)","La Clave","Rizoma","Sonido Popular","Red de Servicios de Análisis de sustancias"]
 };
 const $=id=>document.getElementById(id);
 $("servicios").innerHTML=S.map((s,i)=>`<article class="svc ${s[4]}"><details${i===1?" open":""}><summary>${s[0]}</summary><dl><div><dt>Qué hacemos</dt><dd>${s[1]}</dd></div><div><dt>Qué logras</dt><dd>${s[2]}</dd></div><div><dt>Para quién</dt><dd>${s[3]}</dd></div></dl></details><input type="checkbox" id="s${i}"><label for="s${i}">Sumar al combo</label></article>`).join("");
@@ -230,7 +341,7 @@ $("principios").innerHTML=P.map((p,i)=>`<details${i===0?" open":""}><summary><sp
 const grupos=Object.keys(A);
 $("tabs").innerHTML=grupos.map((g,i)=>`<button type="button" id="t${i}" aria-pressed="${i===0}">${g}</button>`).join("");
 function ver(i){grupos.forEach((_,k)=>$("t"+k).setAttribute("aria-pressed",k===i));
- $("nodos").innerHTML=A[grupos[i]].map((n,k)=>`<span class="nodo" style="animation-delay:${k*50}ms"><span class="star"></span>${n}</span>`).join("")}
+ $("nodos").innerHTML=A[grupos[i]].map((n,k)=>`<span class="nodo" tabindex="0" style="animation-delay:${k*50}ms"><span class="star"></span>${n}</span>`).join("")}
 grupos.forEach((_,i)=>$("t"+i).addEventListener("click",()=>ver(i)));ver(0);
 const enc=t=>encodeURIComponent(t).replace(/%3A/g,":").replace(/%2C/g,",");
 function combo(){const sel=S.filter((_,i)=>$("s"+i).checked).map(s=>s[0]);
@@ -250,6 +361,38 @@ function combo(){const sel=S.filter((_,i)=>$("s"+i).checked).map(s=>s[0]);
 $("servicios").addEventListener("change",combo);combo();
 $("copy").addEventListener("click",()=>{const b=$("copy");
  navigator.clipboard.writeText($("mail").textContent).then(()=>{b.textContent="Copiado"},()=>{const r=document.createRange();r.selectNodeContents($("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r)})});
+
+/* ===== v2: movimiento sobrio ===== */
+(function(){
+ const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ $("anio").textContent=new Date().getFullYear();
+ const els=[...document.querySelectorAll(".foto,.hero .txt>*,.band .in>h2,.band .in>p.hint,.svc,.caja,.cotiza,.contacto,.nodos,.tabs,#principios details,.foot .in>*")];
+ els.forEach(e=>e.classList.add("rv"));
+ const count=b=>{const n=+b.dataset.n,pre=b.dataset.pre||"";if(reduce){b.textContent=pre+n;return}
+  const t0=performance.now(),d=1100;const f=t=>{const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);b.textContent=pre+Math.round(n*e);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
+ if(!("IntersectionObserver" in window)||reduce){els.forEach(e=>e.classList.add("vis"));return}
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){const e=x.target;
+   const i=[...e.parentElement.children].indexOf(e);e.style.transitionDelay=(i%4*70)+"ms";e.classList.add("vis");io.unobserve(e);setTimeout(()=>{e.classList.remove("rv");e.style.transitionDelay=""},1300)}}),{threshold:.1});
+ els.forEach(e=>io.observe(e));
+ const cif=document.querySelector(".cifras");
+ if(cif){const bs=[...cif.querySelectorAll("b[data-n]")];bs.forEach(b=>b.textContent=(b.dataset.pre||"")+"0");
+  const o2=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){bs.forEach(count);o2.disconnect()}}),{threshold:.4});o2.observe(cif);
+  setTimeout(()=>bs.forEach(b=>{if(b.textContent===(b.dataset.pre||"")+"0")count(b)}),6000)}
+ setTimeout(()=>els.forEach(e=>e.classList.add("vis")),6000);
+ const r=$("resumen");new MutationObserver(()=>{r.animate([{transform:"scale(1)"},{transform:"scale(1.06)"},{transform:"scale(1)"}],{duration:260})}).observe(r,{childList:true});
+})();
+
+(function(){
+ const top=document.querySelector(".top"),brand=$("brand"),touch=matchMedia("(hover:none)").matches,reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;let t;
+ const abrir=()=>{top.classList.add("open");clearTimeout(t);t=setTimeout(()=>top.classList.remove("open"),3000)};
+ if(touch){
+  if(!reduce)setTimeout(abrir,1100);
+  brand.addEventListener("click",e=>{if(!top.classList.contains("open")){e.preventDefault();abrir()}else{top.classList.remove("open")}});
+  document.addEventListener("click",e=>{if(!top.contains(e.target))top.classList.remove("open")},{passive:true});
+ }
+ const an=[...document.querySelectorAll("[data-anim],.lugar .star")];
+ if("IntersectionObserver" in window){const o=new IntersectionObserver(es=>es.forEach(x=>{x.target.style.animationPlayState=x.isIntersecting?"running":"paused"}));an.forEach(e=>o.observe(e))}
+})();
 </script>
 
 </body>
